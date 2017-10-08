@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/yanghl22/nodejs-web-api/issues"
   },
-  "homepage": "https://github.com/yanghl22/nodejs-web-api#readme"
+  "homepage": "https://github.com/yanghl22/nodejs-web-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
 }

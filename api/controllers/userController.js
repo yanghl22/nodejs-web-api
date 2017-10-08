@@ -47,17 +47,94 @@ exports.delete_a_user = (req, res) => {
 //Add friends relationship between two users.
 exports.add_a_friend = (req, res) => {
     if (req.body.requestor && req.body.target) {
-        res.status(200).send("OK");
+        User.findOne({ email: req.body.requestor }, (err, requestor) => {
+            if (err)
+                res.send(err);
+            if (requestor) {
+                User.findOne({ email: req.body.target, friends: { $nin: [requestor._id] } }, (err, target) => {
+                    if (err) res.send(err);
+                    if (target) {
+
+                        //Add target to requestor's friend list
+                        User.findByIdAndUpdate(requestor._id,
+                            { "$push": { "friends": target._id } },
+                            { "new": true, "upsert": true },
+                            (err, user) => {
+                                if (err)
+                                    res.send(err);
+                            });
+
+                        //Add target to requestor's followed list
+                        User.findByIdAndUpdate(requestor._id,
+                            { "$push": { "followed": target._id } },
+                            { "new": true, "upsert": true },
+                            (err, user) => {
+                                if (err)
+                                    res.send(err);
+                            });
+
+                        //Add requestor to target's friend list
+                        User.findByIdAndUpdate(target._id,
+                            { "$push": { "friends": requestor._id } },
+                            { "new": true, "upsert": true },
+                            (err, user) => {
+                                if (err)
+                                    res.send(err);
+                            });
+
+                        //Add requestor to target's friend list
+                        User.findByIdAndUpdate(target._id,
+                            { "$push": { "followed": requestor._id } },
+                            { "new": true, "upsert": true },
+                            (err, user) => {
+                                if (err)
+                                    res.send(err);
+                            });
+
+                    } else {
+                        res.status(404).send("Targeted user does not exist!");
+                    }
+
+                    res.status(200).json({
+                        success: true
+                    });
+                });
+
+            } else {
+                res.status(404).send("Requested user does not exist!");
+            }
+        });
 
     } else {
-        res.status(400).send("wrong parameters!")
+        res.status(400).send("wrong parameters!");
     }
 };
 
 //Get user friend list by email
 exports.get_friends = (req, res) => {
-    if (req.body.email) {
-        res.status(200).send("OK");
+    if (req.body.requestor) {
+        User.findOne({ email: req.body.requestor }, (err, user) => {
+            if (err) res.send(err);
+            if (user) {
+                User.find({ _id: { $in: user.friends } }).select("email -_id")
+                    .exec((err, friends) => {
+                        if (err) res.send(err);
+                        if (friends && friends.length > 0) {
+                            friends = friends.map(x => x.email);
+                            res.json({
+                                success: true,
+                                friends: friends,
+                                count: friends.length
+                            });
+                        } else {
+                            res.status(200).send("Requested user has no friends yet!")
+                        }
+                    });
+            } else {
+                res.status(404).send("Requested user does not exist")
+            }
+
+        });
     } else {
         res.status(400).send("wrong parameters!")
     }

@@ -43,3 +43,61 @@ exports.delete_a_user = (req, res) => {
         });
 };
 
+
+//Add friends relationship between two users.
+exports.add_a_friend = (req, res) => {
+    if (req.body.requestor && req.body.target) {
+        res.status(200).send("OK");
+
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+};
+
+//Get user friend list by email
+exports.get_friends = (req, res) => {
+    if (req.body.email) {
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+}
+
+
+//Get common user between two users
+exports.get_common_friends = (req, res) => {
+    if (req.body.users && req.body.users.length == 2) {
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+}
+
+//subscribe user's updates by following a user
+exports.follow_a_user = (req, res) => {
+    if (req.body.requestor && req.body.target) {
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+}
+
+//unsubscribe user's updates by unfollowing a user
+exports.unfollow_a_user = (req, res) => {
+    if (req.body.requestor && req.body.target) {
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+}
+
+//Get user's all followers in order to push feeds
+exports.get_all_followers = (req, res) => {
+    if (req.body.sender) {
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("wrong parameters!")
+    }
+}
+
+

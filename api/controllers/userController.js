@@ -1,7 +1,8 @@
 'use strict';
 
 let mongoose = require('mongoose'),
-    User = mongoose.model('Users');
+    User = mongoose.model('Users'),
+    intersect = require('intersect');
 
 //List out all users from MongoDB
 exports.list_all_users = (req, res) => {
@@ -144,7 +145,37 @@ exports.get_friends = (req, res) => {
 //Get common user between two users
 exports.get_common_friends = (req, res) => {
     if (req.body.users && req.body.users.length == 2) {
-        res.status(200).send("OK");
+        User.findOne({ email: req.body.users[0] }, (err, first) => {
+            if (err) res.send(err);
+            if (first) {
+                User.findOne({ email: req.body.users[1] }, (err, second) => {
+                    if (err) res.send(err);
+                    if (second) {
+                        let firstFriends = JSON.parse(JSON.stringify(first.friends));
+                        let secondFriends = JSON.parse(JSON.stringify(second.friends));
+                        let commonFriends = intersect(firstFriends, secondFriends);
+
+                        User.find({ _id: { $in: commonFriends } }).select("email -_id")
+                            .exec((err, friends) => {
+                                if (err) res.send(
+                                    err);
+                                friends = friends.map(x => x.email);
+                                res.json({
+                                    success: true,
+                                    friends: friends,
+                                    count: friends.length
+                                });
+                            });
+
+                    } else {
+                        res.status(404).send("The second user does not exist")
+                    }
+                });
+
+            } else {
+                res.status(404).send("The first user does not exist")
+            }
+        });
     } else {
         res.status(400).send("wrong parameters!")
     }

@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "express": "^4.16.1",
+    "intersect": "^1.0.1",
     "mongoose": "^4.12.0"
   }
 }

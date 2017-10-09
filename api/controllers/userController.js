@@ -184,7 +184,27 @@ exports.get_common_friends = (req, res) => {
 //subscribe user's updates by following a user
 exports.follow_a_user = (req, res) => {
     if (req.body.requestor && req.body.target) {
-        res.status(200).send("OK");
+        User.findOne({ email: req.body.target }, (err, target) => {
+            if (err) res.send(err);
+            if (target) {
+                User.findOne({ email: req.body.requestor, followed: { $nin: [target._id] } }, (err, requestor) => {
+                    if (err) res.send(err);
+
+                    User.findByIdAndUpdate(requestor._id,
+                        { "$push": { "followed": target._id } },
+                        { "new": true, "upsert": true }, (err, user) => {
+                            if (err)
+                                res.send(err);
+                        });
+
+                    res.status(200).json({ success: true });
+                });
+            }
+            else {
+                res.status(404).send("The targeted user does not exist!")
+            }
+
+        });
     } else {
         res.status(400).send("wrong parameters!")
     }
@@ -193,7 +213,26 @@ exports.follow_a_user = (req, res) => {
 //unsubscribe user's updates by unfollowing a user
 exports.unfollow_a_user = (req, res) => {
     if (req.body.requestor && req.body.target) {
-        res.status(200).send("OK");
+        User.findOne({ email: req.body.target }, (err, target) => {
+            if (err) res.send(err);
+            if (target) {
+                User.findOne({ email: req.body.requestor, followed: { $in: [target._id] } }, (err, requestor) => {
+                    if (err) res.send(err);
+
+                    User.findByIdAndUpdate(requestor._id,
+                        { "$pull": { "followed": target._id } },
+                        { "new": true, "upsert": true }, (err, user) => {
+                            if (err)
+                                res.send(err);
+                        });
+
+                    res.status(200).json({ success: true });
+                });
+            } else {
+                res.status(404).send("The targeted user does not exist!")
+            }
+
+        });
     } else {
         res.status(400).send("wrong parameters!")
     }
@@ -202,7 +241,23 @@ exports.unfollow_a_user = (req, res) => {
 //Get user's all followers in order to push feeds
 exports.get_all_followers = (req, res) => {
     if (req.body.sender) {
-        res.status(200).send("OK");
+        User.findOne({ email: req.body.sender }, (err, sender) => {
+            if (err) res.send(err);
+            if (sender) {
+                User.find({ followed: { $in: [sender._id] } }).select("email -_id")
+                    .exec((err, followers) => {
+                        if (err) res.send(err);
+                        res.json({
+                            success: true,
+                            recipients: followers,
+                            count: followers.length
+                        });
+                    });
+            } else {
+                res.status(404).send("The requested user does not exist!")
+            }
+
+        });
     } else {
         res.status(400).send("wrong parameters!")
     }

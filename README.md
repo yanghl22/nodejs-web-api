@@ -110,7 +110,9 @@ Run "npm run start" on your terminal, which will start the server.
 
 #### Output
 
-![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/dd-friend.png "get friend list" "output")
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/add-friend.png  "output")
+
+
 
 
 
@@ -141,6 +143,10 @@ Run "npm run start" on your terminal, which will start the server.
 #### Output
 
 ![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friends.png "output")
+
+
+
+
 
 
 * As a user, I need an API to retrieve the common friends list between two email addresses.
@@ -177,6 +183,10 @@ Run "npm run start" on your terminal, which will start the server.
 
 
 
+
+
+
+
 * As a user, I need an API to subscribe to updates from an email address.
 
 Please note that "subscribing to updates" is NOT equivalent to "adding a friend connection".
@@ -202,6 +212,9 @@ Please propose JSON responses for any errors that might occur.
 #### Output
 
 ![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user-output.png "output")
+
+
+
 
 
 
@@ -233,6 +246,9 @@ Please propose JSON responses for any errors that might occur.
 #### Output
 
 ![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/unfollow-user-output.png "output")
+
+
+
 
 
 * As a user, I need an API to retrieve all email addresses that can receive updates from an email address.
@@ -269,6 +285,9 @@ Please propose JSON responses for any errors that might occur.
 #### Output
 
 ![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-followers-output.png "output")
+
+
+
 
 
 # TODOLIST

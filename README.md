@@ -79,6 +79,8 @@ Run "npm run start" on your terminal, which will start the server.
 * run below commands to insert seeds to mongodb.
 
 `use usersdb`
+
+
 `db.users.insertMany([{email:"andy@example.com", name:"andy",profession:"project manager",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"john@example.com", name:"john",profession:"business analyst",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"bill@example.com", name:"bill",profession:"team leader",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"jack@example.com", name:"jack",profession:"qa",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"yanghl22@gmail.com", name:"honglin",profession:"full-stack developer",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()}])`
 
 

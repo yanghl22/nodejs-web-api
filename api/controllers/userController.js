@@ -93,7 +93,7 @@ exports.add_a_friend = (req, res) => {
                             });
 
                     } else {
-                        res.status(404).send("Targeted user does not exist!");
+                        res.status(404).send("They are friends already!");
                     }
 
                     res.status(200).json({
@@ -262,5 +262,3 @@ exports.get_all_followers = (req, res) => {
         res.status(400).send("wrong parameters!")
     }
 }
-
-

@@ -292,4 +292,4 @@ Please propose JSON responses for any errors that might occur.
 
 # TODOLIST
 
-The exception handling is not well done yet, later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular 2 to consume the webapi.
+The exception handling is not well done yet, later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular to consume the webapi.

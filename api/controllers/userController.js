@@ -93,7 +93,7 @@ exports.add_a_friend = (req, res) => {
                             });
 
                     } else {
-                        res.status(404).send("They are friends already!");
+                        res.status(404).send("Requester and targeted user are friends already, or targeted user does not exist!");
                     }
 
                     res.status(200).json({
@@ -186,10 +186,10 @@ exports.follow_a_user = (req, res) => {
     if (req.body.requestor && req.body.target) {
         User.findOne({ email: req.body.target }, (err, target) => {
             if (err) res.send(err);
+
             if (target) {
                 User.findOne({ email: req.body.requestor, followed: { $nin: [target._id] } }, (err, requestor) => {
                     if (err) res.send(err);
-
                     User.findByIdAndUpdate(requestor._id,
                         { "$push": { "followed": target._id } },
                         { "new": true, "upsert": true }, (err, user) => {

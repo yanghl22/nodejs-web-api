@@ -245,7 +245,7 @@ Please propose JSON responses for any errors that might occur.
 
 #### Output
 
-![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/unfollow-user-output.png "output")
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/unfollow-user-output.png "unfollow user output")
 
 
 

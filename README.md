@@ -12,17 +12,17 @@ In this exercise, I will create a RESTful API using Node.js and MongoDB.
 
 Install Node.js:
 
-Run "npm -v" in your terminal to check the version of NPM installed on your machine. If not stalled, click  [here](https://nodejs.org/en/download/current/)to install Node.js.
+Run "npm -v" in your terminal to check the version of NPM installed on your machine. If not stalled, click  [here](https://nodejs.org/en/download/current/) to install Node.js.
 
 Install MongoDB:
 
-Run "mongo --version" in your terminal to check the version of and MongoDB. If not stalled, click  [here](https://docs.mongodb.com/manual/installation/)to install MongoDB.
+Run "mongo --version" in your terminal to check the version of MongoDB. If not stalled, click  [here](https://docs.mongodb.com/manual/installation/) to install MongoDB.
 
 ### Steps to setup nodejs-user-api project:
 
 * Create a folder name nodejs-user-api.
 
-* Navigate to nodejs-user-api and run "npm init". This command will create a package.json file which contains necessary information to npm and dependencies. Package.json will looks like below enventually.
+* Navigate to nodejs-user-api and run "npm init". This command will create a package.json file which contains necessary information to npm and dependencies. Package.json will looks like below eventually.
 
 ![alt package.json](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/package.png "package.json")
 
@@ -56,7 +56,7 @@ Mongoose is to interact with a MongoDB instance.
 
 ### Routes setup:
 
-Add below routes to userRoute.js base on below user stories.
+As shown below, create routes in userRoute.js file base on user stories.
 
 ![alt Routes](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/user-routes.png "Routes")
 
@@ -70,13 +70,13 @@ Define user schema as below:
 
 ### Start the server
 
-Run "npm run start" on your terminal, which will start the server.
+Run "npm run start" on your terminal to start the server.
 
 ### Insert seeds to Mongo
 
-* Open terminal and run "mongo" to go to mongo shell.
+* Run "mongo" command on your terminal to start Mongo shell.
 
-* run below commands to insert seeds to mongodb.
+* Run below 2 commands to insert seeds to Mongodb.
 
 `use usersdb`
 
@@ -294,4 +294,4 @@ Please propose JSON responses for any errors that might occur.
 
 # TODOLIST
 
-The exception handling is not well done yet, later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular to consume the webapi.
+**The exception handling is not well done yet, later I will refine the exception handling and write tests for each webapi. In addition, I will use Angular create a front-end application to consume the upper webapi**.

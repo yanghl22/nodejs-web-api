@@ -108,6 +108,10 @@ Run "npm run start" on your terminal, which will start the server.
 ![alt add friend](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/add-friend2.png "add friend")
 
 
+#### Output
+
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/dd-friend.png "get friend list" "output")
+
 
 
 * As a user, I need an API to retrieve the friends list for an email address.
@@ -134,6 +138,9 @@ Run "npm run start" on your terminal, which will start the server.
 
 ![alt get friend list](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friend-list.png "get friend list")
 
+#### Output
+
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friends.png "output")
 
 
 * As a user, I need an API to retrieve the common friends list between two email addresses.
@@ -162,7 +169,11 @@ Run "npm run start" on your terminal, which will start the server.
 
 #### Implementation
 
-![alt get user friend list](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friend-list.png "get user friend list")
+![alt get common friend list](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-common-friends.png "get common friend list")
+
+#### Output
+
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/common-friend.png "output")
 
 
 
@@ -187,6 +198,10 @@ Please propose JSON responses for any errors that might occur.
 #### Implementation
 
 ![alt follow user](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user.png "follow user")
+
+#### Output
+
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user-output.png "output")
 
 
 
@@ -214,6 +229,10 @@ Please propose JSON responses for any errors that might occur.
 
 ![alt unfollow user](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/unfollow-user.png "unfollow user")
 
+
+#### Output
+
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/unfollow-user-output.png "output")
 
 
 * As a user, I need an API to retrieve all email addresses that can receive updates from an email address.
@@ -247,9 +266,11 @@ Please propose JSON responses for any errors that might occur.
 
 ![alt get followers](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user.png "get followers")
 
+#### Output
 
+![alt output](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-followers-output.png "output")
 
 
 # TODOLIST
 
-Later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular 2 to consume the webapi
+The exception handling is not well done yet, later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular 2 to consume the webapi.

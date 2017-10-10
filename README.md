@@ -12,17 +12,17 @@ In this exercise, I will create a RESTful API using Node.js and MongoDB.
 
 Install Node.js:
 
-Run "npm -v" in your terminal to check the version of NPM installed on your machine. If not stalled, go to [here](https://nodejs.org/en/download/current/)to install Node.js.
+Run "npm -v" in your terminal to check the version of NPM installed on your machine. If not stalled, click  [here](https://nodejs.org/en/download/current/)to install Node.js.
 
 Install MongoDB:
 
-Run "mongo --version" in your terminal to check the version of and MongoDB.If not stalled, go to [here](https://docs.mongodb.com/manual/installation/)to install MongoDB.
+Run "mongo --version" in your terminal to check the version of and MongoDB. If not stalled, click  [here](https://docs.mongodb.com/manual/installation/)to install MongoDB.
 
 ### Steps to setup nodejs-user-api project:
 
 * Create a folder name nodejs-user-api.
 
-* Navigate to nodejs-user-api and run "npm init". This command will create a package.json file which contains necessary information to npm and dependencies management. package.json will looks like below enventually.
+* Navigate to nodejs-user-api and run "npm init". This command will create a package.json file which contains necessary information to npm and dependencies. Package.json will looks like below enventually.
 
 ![alt package.json](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/package.png "package.json")
 
@@ -30,7 +30,7 @@ Run "mongo --version" in your terminal to check the version of and MongoDB.If no
 
 * Create a "api" folder in the rooter, create 3 more subfolder "api/controllers" "api/models" "api/routes".
 
-* Create following files, "api/controllers/userController.js" "api/models/userModel.js" "api/routes/userRoute.js" 
+* Create following files, "api/controllers/userController.js" "api/models/userModel.js" "api/routes/userRoute.js"
 
 The project structure will look like below.
 
@@ -48,7 +48,7 @@ Install express, nodmon and mongoose.
     npm install mongoose --save
 
 Express will be used to create the server.
-Nodmon will track the changes of our application by watching changed files and automatically restart the server. 
+Nodmon will track the changes of our application by watching changed files and automatically restart the server.
 Mongoose is to interact with a MongoDB instance.
 
 ![alt server file](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/server.png "server file")
@@ -70,39 +70,39 @@ Define user schema as below:
 
 ### Start the server
 
-Run "npm run start" on your terminal,which will start the server.
+Run "npm run start" on your terminal, which will start the server.
 
 ### Insert seeds to Mongo
 
-Open terminal and run "mongo" to go to mongo shell.
+* Open terminal and run "mongo" to go to mongo shell.
 
-run below command to insert seeds to mongodb.
+* run below commands to insert seeds to mongodb.
 
 `use usersdb`
-`db.users.insertMany([{email:"andy@example.com", name:"andy",profession:"project manager"},{email:"john@example.com", name:"john",profession:"business analyst"},{email:"bill@example.com", name:"bill",profession:"team leader"},{email:"jack@example.com", name:"jack",profession:"qa"},{email:"yanghl22@gmail.com", name:"honglin",profession:"full-stack developer"}])`
+`db.users.insertMany([{email:"andy@example.com", name:"andy",profession:"project manager",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"john@example.com", name:"john",profession:"business analyst",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"bill@example.com", name:"bill",profession:"team leader",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"jack@example.com", name:"jack",profession:"qa",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()},{email:"yanghl22@gmail.com", name:"honglin",profession:"full-stack developer",friends:[],followed:[],create_date:new Timestamp(),updated_date:new Timestamp()}])`
 
 
 ### User Stories
 
-1. As a user, I need an API to create a friend connection between two email addresses.
+* As a user, I need an API to create a friend connection between two email addresses.
 
-The API should receive the following JSON request:
+    The API should receive the following JSON request:
 
-{
-  friends:
-    [
-      'andy@example.com',
-      'john@example.com'
-    ]
-}
-The API should return the following JSON response on success:
+    {
+      friends:
+        [
+          'andy@example.com',
+          'john@example.com'
+        ]
+    }
+    The API should return the following JSON response on success:
 
-{
-  "success": true
-}
-Please propose JSON responses for any errors that might occur.
+    {
+      "success": true
+    }
+    Please propose JSON responses for any errors that might occur.
 
-##### Implementation
+#### Implementation
 
 ![alt add friend](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/add-friend1.png "add friend")
 ![alt add friend](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/add-friend2.png "add friend")
@@ -110,63 +110,63 @@ Please propose JSON responses for any errors that might occur.
 
 
 
-2. As a user, I need an API to retrieve the friends list for an email address.
+* As a user, I need an API to retrieve the friends list for an email address.
 
-The API should receive the following JSON request:
+    The API should receive the following JSON request:
 
-{
-  email: 'andy@example.com'
-}
-The API should return the following JSON response on success:
+    {
+      email: 'andy@example.com'
+    }
+    The API should return the following JSON response on success:
 
-{
-  "success": true,
-  "friends" :
-    [
-      'john@example.com'
-    ],
-  "count" : 1   
-}
-Please propose JSON responses for any errors that might occur.
+    {
+      "success": true,
+      "friends" :
+        [
+          'john@example.com'
+        ],
+      "count" : 1   
+    }
+    Please propose JSON responses for any errors that might occur.
 
 
-##### Implementation
+#### Implementation
 
 ![alt get friend list](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friend-list.png "get friend list")
 
 
 
-3. As a user, I need an API to retrieve the common friends list between two email addresses.
+* As a user, I need an API to retrieve the common friends list between two email addresses.
 
-The API should receive the following JSON request:
+    The API should receive the following JSON request:
 
-{
-  friends:
-    [
-      'andy@example.com',
-      'john@example.com'
-    ]
-}
-The API should return the following JSON response on success:
+    {
+      friends:
+        [
+          'andy@example.com',
+          'john@example.com'
+        ]
+    }
+    The API should return the following JSON response on success:
 
-{
-  "success": true,
-  "friends" :
-    [
-      'common@example.com'
-    ],
-  "count" : 1   
-}
-Please propose JSON responses for any errors that might occur.
+    {
+      "success": true,
+      "friends" :
+        [
+          'common@example.com'
+        ],
+      "count" : 1   
+    }
+    Please propose JSON responses for any errors that might occur.
 
 
-##### Implementation
+#### Implementation
 
 ![alt get user friend list](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/get-friend-list.png "get user friend list")
 
 
 
-4. As a user, I need an API to subscribe to updates from an email address.
+* As a user, I need an API to subscribe to updates from an email address.
 
 Please note that "subscribing to updates" is NOT equivalent to "adding a friend connection".
 
@@ -184,66 +184,66 @@ The API should return the following JSON response on success:
 Please propose JSON responses for any errors that might occur.
 
 
-##### Implementation
+#### Implementation
 
 ![alt follow user](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user.png "follow user")
 
 
 
-5. As a user, I need an API to block updates from an email address.
+* As a user, I need an API to block updates from an email address.
 
-Suppose "andy@example.com" blocks "john@example.com":
+    Suppose "andy@example.com" blocks "john@example.com":
 
-if they are connected as friends, then "andy" will no longer receive notifications from "john"
-if they are not connected as friends, then no new friends connection can be added
-The API should receive the following JSON request:
+    if they are connected as friends, then "andy" will no longer receive notifications from "john"
+    if they are not connected as friends, then no new friends connection can be added
+    The API should receive the following JSON request:
 
-{
-  "requestor": "andy@example.com",
-  "target": "john@example.com"
-}
-The API should return the following JSON response on success:
+    {
+      "requestor": "andy@example.com",
+      "target": "john@example.com"
+    }
+    The API should return the following JSON response on success:
 
-{
-  "success": true
-}
-Please propose JSON responses for any errors that might occur.
+    {
+      "success": true
+    }
+    Please propose JSON responses for any errors that might occur.
 
 
-##### Implementation
+#### Implementation
 
 ![alt unfollow user](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/unfollow-user.png "unfollow user")
 
 
 
-6. As a user, I need an API to retrieve all email addresses that can receive updates from an email address.
+* As a user, I need an API to retrieve all email addresses that can receive updates from an email address.
 
-Eligibility for receiving updates from i.e. "john@example.com":
+    Eligibility for receiving updates from i.e. "john@example.com":
 
-has not blocked updates from "john@example.com", and
-at least one of the following:
-has a friend connection with "john@example.com"
-has subscribed to updates from "john@example.com"
-has been @mentioned in the update
-The API should receive the following JSON request:
+    has not blocked updates from "john@example.com", and
+    at least one of the following:
+    has a friend connection with "john@example.com"
+    has subscribed to updates from "john@example.com"
+    has been @mentioned in the update
+    The API should receive the following JSON request:
 
-{
-  "sender":  "john@example.com",
-  "text": "Hello World! kate@example.com"
-}
-The API should return the following JSON response on success:
+    {
+      "sender":  "john@example.com",
+      "text": "Hello World! kate@example.com"
+    }
+    The API should return the following JSON response on success:
 
-{
-  "success": true
-  "recipients":
-    [
-      "lisa@example.com",
-      "kate@example.com"
-    ]
-}
-Please propose JSON responses for any errors that might occur.
+    {
+      "success": true
+      "recipients":
+        [
+          "lisa@example.com",
+          "kate@example.com"
+        ]
+    }
+    Please propose JSON responses for any errors that might occur.
 
-##### Implementation
+#### Implementation
 
 ![alt get followers](https://github.com/yanghl22/nodejs-web-api/blob/master/static/images/follow-user.png "get followers")
 
@@ -252,5 +252,4 @@ Please propose JSON responses for any errors that might occur.
 
 # TODOLIST
 
-Refine the exception handling, write tests for each api.
-
+Later I will refine the exception handling and write tests for each webapi. In addition, I will create a front-end application use angular 2 to consume the webapi

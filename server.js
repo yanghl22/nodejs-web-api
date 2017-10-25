@@ -11,7 +11,7 @@ const express = require('express'),
 // errorHandler = require('errorhandler');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://yanghl22:yhl22578685@ds231725.mlab.com:31725/mongo-hl')
+mongoose.connect(process.env.CONSTR)
   .then(() => console.log('connect to mongodb successfully!'))
   .catch((err) => console.error(err));
 

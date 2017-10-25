@@ -11,7 +11,8 @@ exports.list_all_users = (req, res) => {
             res.send(err);
 
         res.status(200).json(users);
-    });
+    })
+        .select('name email profession create_date friends');
 }
 
 //Create a new user by request body data
@@ -29,7 +30,7 @@ exports.get_a_user = (req, res) => {
     User.findById(req.params.userId, (err, user) => {
         if (err)
             res.send(err);
-        res.json(user);
+        res.json(user); 
     });
 };
 

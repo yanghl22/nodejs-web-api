@@ -2,7 +2,7 @@
   "name": "userapi",
   "version": "1.0.0",
   "description": "RESTful userApi",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,11 +24,15 @@
   },
   "homepage": "https://github.com/yanghl22/nodejs-web-api#readme",
   "devDependencies": {
+    "errorhandler": "^1.5.0",
     "nodemon": "^1.12.1"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "intersect": "^1.0.1",
-    "mongoose": "^4.12.0"
+    "mongoose": "^4.12.0",
+    "serve-favicon": "^2.4.5"
   }
 }

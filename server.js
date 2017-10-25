@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
@@ -5,11 +7,13 @@ const express = require('express'),
   User = require('./api/models/userModel'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
+
   cors = require('cors');
-  // errorHandler = require('errorhandler');
+// errorHandler = require('errorhandler');
+//const conctionStr = 'mongodb://' + process.env.DB_USER + ':' + process.env.PASSWORD + '@ds231725.mlab.com:31725/mongo-hl';
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://yanghl22:yhl22578685@ds231725.mlab.com:31725/mongo-hl')
+mongoose.connect(process.env.CONSTR)
   .then(() => console.log('connect to mongodb successfully!'))
   .catch((err) => console.error(err));
 

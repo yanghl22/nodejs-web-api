@@ -5,8 +5,8 @@ const express = require('express'),
   User = require('./api/models/userModel'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
-  cors = require('cors'),
-  errorHandler = require('errorhandler');
+  cors = require('cors');
+  // errorHandler = require('errorhandler');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://yanghl22:yhl22578685@ds231725.mlab.com:31725/mongo-hl')

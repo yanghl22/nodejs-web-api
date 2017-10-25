@@ -9,9 +9,9 @@ const express = require('express'),
   errorHandler = require('errorhandler');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://yanghl22:yhl22578685@ds231725.mlab.com:31725/mongo-hl');
-// .then(()=> console.log('connect to mongodb successfully!'))
-// .catch((err) => console.error(err));
+mongoose.connect('mongodb://yanghl22:yhl22578685@ds231725.mlab.com:31725/mongo-hl')
+  .then(() => console.log('connect to mongodb successfully!'))
+  .catch((err) => console.error(err));
 
 // app.use(cookieParser);
 app.use(bodyParser.urlencoded({ extended: true }));

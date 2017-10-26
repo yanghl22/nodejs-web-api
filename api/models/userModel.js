@@ -10,6 +10,11 @@ const UserSchema = new Schema({
         trim: true,
         required: 'Kindly enter the email address!'
     },
+    password: {
+        type: String,
+        trim: true,
+        required: 'Password is mandatory!'
+    },
     name: {
         type: String,
 	trim: true,

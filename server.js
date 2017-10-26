@@ -7,6 +7,7 @@ const express = require('express'),
   User = require('./api/models/userModel'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
+  morgan = require('morgan'),
   cors = require('cors');
 // errorHandler = require('errorhandler');
 
@@ -18,13 +19,10 @@ mongoose.connect(process.env.CONSTR)
 // app.use(cookieParser);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(morgan('dev'));
 // app.use(errorHandler);
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 app.use(cors());
 
 

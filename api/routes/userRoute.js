@@ -1,30 +1,39 @@
 'use strict';
 module.exports = function (app) {
-    const userList = require('../controllers/userController');
+    const userList = require('../controllers/userController'),
+        authentication = require('../controllers/authController');
 
+    app.use('/users', authentication.auth_token);
     app.route('/users')
-        .get(userList.list_all_users)
+        .get(userList.list_all_users);
+
+    app.route('/register')
         .post(userList.create_a_user);
 
-    app.route('/users/:userId')
+    app.use('/user/:userId', authentication.auth_token);
+    app.route('/user/:userId')
         .get(userList.get_a_user)
         .delete(userList.delete_a_user);
 
-    app.route('/users/addfriend')
+    app.route('/user/addfriend')
         .post(userList.add_a_friend);
 
-    app.route('/users/getfriends')
+    app.route('/user/getfriends')
         .post(userList.get_friends);
 
-    app.route('/users/commonfriends')
+    app.route('/user/commonfriends')
         .post(userList.get_common_friends);
 
-    app.route('/users/follow')
+    app.route('/user/follow')
         .post(userList.follow_a_user);
 
-    app.route('/users/unfollow')
+    app.route('/user/unfollow')
         .post(userList.unfollow_a_user);
 
-    app.route('/users/getfollowers')
+    app.route('/user/getfollowers')
         .post(userList.get_all_followers);
+
+    app.route('/authenticate')
+        .post(authentication.auth_user);
+
 };

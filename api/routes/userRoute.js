@@ -1,16 +1,13 @@
 'use strict';
 module.exports = function (app) {
-    const userList = require('../controllers/userController'),
-        authentication = require('../controllers/authController');
+    const userList = require('../controllers/userController');
 
-    app.use('/users', authentication.auth_token);
     app.route('/users')
         .get(userList.list_all_users);
 
     app.route('/register')
         .post(userList.create_a_user);
 
-    app.use('/user/:userId', authentication.auth_token);
     app.route('/user/:userId')
         .get(userList.get_a_user)
         .delete(userList.delete_a_user);
@@ -32,8 +29,5 @@ module.exports = function (app) {
 
     app.route('/user/getfollowers')
         .post(userList.get_all_followers);
-
-    app.route('/authenticate')
-        .post(authentication.auth_user);
 
 };

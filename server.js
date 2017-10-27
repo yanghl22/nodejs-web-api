@@ -27,8 +27,12 @@ app.use(cors());
 
 
 app.use(express.static(__dirname + '/static/images'));
-const routes = require('./api/routes/userRoute');
-routes(app);
+const authRoute = require('./api/routes/authRoute');
+authRoute(app);
+const userRoute = require('./api/routes/userRoute');
+userRoute(app);
+
+
 
 app.listen(port);
 console.log('Social Network RESTful API server started on: ' + port);

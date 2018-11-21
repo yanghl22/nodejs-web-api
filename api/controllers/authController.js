@@ -13,8 +13,8 @@ exports.auth_user = (req, res) => {
             res.json({ sucess: false, message: 'Authentication failed. User not found.' });
         } else if (user) {
             if (user.password != req.body.password) {
-                console.log(req.body.password);
-                console.log(user.email + ' ' + user.password);
+                //console.log(req.body.password);
+                //console.log(user.email + ' ' + user.password);
                 res.json({ sucess: false, message: 'Authentication failed.Wrong password.' });
             } else {
                 const payload = {
